@@ -21,8 +21,10 @@ Customer:
 
 ? all the product names ordered by customer "Joe" after '11/1/2016'
 
-  select * from Customer c
+  select p.Name from Customer c
   Join Order o on c.CustomerId==o.CustomerId
+  Join Product p 
+  Join OrderProduct op on op.OrderId==o.OrderId and op.ProductId==p.ProductId
   where c.Name='Joe' and o.CreatedAt > '11/1/2016'
 
 ? the total amount spend by customer "Joe"
